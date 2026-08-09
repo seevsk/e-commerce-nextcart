@@ -28,6 +28,7 @@ export const Sidebar = () => {
       ></div>
       {/* Blur */}
       <div
+        onClick={closeSideMenu}
         className={`fixed top-0 left-0 w-screen h-screen z-10 backdrop-filter backdrop-blur-sm transition-opacity duration-300 ${
           isSideMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
