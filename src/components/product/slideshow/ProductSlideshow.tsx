@@ -39,6 +39,8 @@ export const ProductSlideshow = ({ images, title, className }: Props) => {
         }}
         thumbs={{ swiper: thumbsSwiper }}
         modules={[FreeMode, Navigation, Thumbs, Autoplay]}
+        observer={true}
+        observeParents={true}
         className="mySwiper2"
       >
         {images.map((image) => (
@@ -60,6 +62,8 @@ export const ProductSlideshow = ({ images, title, className }: Props) => {
         freeMode={true}
         watchSlidesProgress={true}
         modules={[FreeMode, Navigation, Thumbs]}
+        observer={true}
+        observeParents={true}
         className="mySwiper"
       >
         {images.map((image) => (

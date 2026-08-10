@@ -19,7 +19,7 @@ export default async function SlugProductPage({ params }: Props) {
   return (
     <div className="mt-5 mb-20 grid md:grid-cols-3 gap-3">
       {/* Slideshow */}
-      <div className="col-span-1 md:col-span-2">
+      <div className="col-span-1 md:col-span-2 min-w-0">
         <ProductSlideshow title={product.title} images={product.images} />
       </div>
 
