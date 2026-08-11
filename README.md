@@ -6,6 +6,8 @@
 2. Create a copy of `.env.template`, rename it to `.env`, and change the environment variables
 3. Install Dependencies `npm install`
 4. Set up the database `docker compose up -d`
-5. Run Project `npm run dev`
+5. Run prisma migration `npx prisma migrate dev`
+6. Exec seed `npm run seed`
+7. Run Project `npm run dev`
 
 ## Run build
