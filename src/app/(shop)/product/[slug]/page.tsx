@@ -1,3 +1,5 @@
+export const revalidate = 604800;
+import { getProductBySlug } from "@/actions";
 import {
   ProductMobileSlideshow,
   ProductSlideshow,
@@ -5,7 +7,7 @@ import {
   SizeSelector,
 } from "@/components";
 import { titleFont } from "@/config/fonts";
-import { initialData } from "@/seed/seed";
+import { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 
 interface Props {
@@ -14,9 +16,29 @@ interface Props {
   }>;
 }
 
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
+  const slug = (await params).slug;
+
+  // fetch data
+  const product = await getProductBySlug(slug);
+
+  return {
+    title: product?.title ?? "Product not found",
+    description: product?.description ?? "",
+    openGraph: {
+      title: product?.title ?? "Product not found",
+      description: product?.description ?? "",
+      images: [`/products/${product?.productImages[1]}`],
+    },
+  };
+}
+
 export default async function SlugProductPage({ params }: Props) {
   const { slug } = await params;
-  const product = initialData.products.find((product) => product.slug === slug);
+  const product = await getProductBySlug(slug);
   if (!product) {
     notFound();
   }
